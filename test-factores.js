@@ -13,7 +13,7 @@ let obj = [
     { myfuncion: f.factor_af, tipo: 'af' },
 ]
 
-function bindearFactores(obj){    
+let bindearFactores = (obj) =>{    
     return {
         myfuncion: obj.myfuncion.bind(factores()), tipo: obj.tipo
     }
