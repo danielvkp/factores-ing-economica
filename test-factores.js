@@ -25,12 +25,14 @@ const shortcode_regex = /\[(.+?):(.+?)\]/g
 
 const cadena = "[pa: 5%, 5] + [fa: 5%, 5] + ([af:8%, 11] + [pa:5%, 3])"
 
+let reemplazarEnCadena = (match, tipo, valor) => {
+    return factoresBindeados
+        .map(x => u.Operar(x, tipo, valor))
+        .filter(u.filtrarVacios)    
+}
+
 let resultadoFactores = cadena
-    .replace(shortcode_regex, (match, tipo, valor) => {  
-        return factoresBindeados.map(x => {
-            return u.Operar(x, tipo, valor)
-        }).filter(u.filtrarVacios)
-    })
+    .replace(shortcode_regex, reemplazarEnCadena)
 
 let resultado = eval(resultadoFactores)
 
